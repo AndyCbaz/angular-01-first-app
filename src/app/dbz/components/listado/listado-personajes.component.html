@@ -1,0 +1,28 @@
+<h3>{{ nameListado }}</h3>
+
+<ul class="list-group">
+  <li
+    *ngFor="let item of personajes; let i = index; let isEven = even"
+    class="list-group-item d-flex justify-content-between"
+    [ngClass]="{
+      'list-group-item-success': isEven,
+      'list-group-item-danger': !isEven
+    }"
+  >
+    <diV>
+      <span
+        class="fs-5"
+        [ngClass]="{ 'text-success': isEven, 'text-danger': !isEven }"
+        >{{ i + 1 }} .
+      </span>
+      <small class="fs-5">{{ item.nombre }}</small> -
+      <small class="fs-5">{{ item.poder }} </small>
+      <span *ngIf="isEven" class="fs-5" [ngClass]="{ 'text-success': !isEven }"
+        >Es Impar</span
+      >
+    </diV>
+    <button (click)="onDeletePersonaje(item.id)" class="btn btn-danger">
+      X
+    </button>
+  </li>
+</ul>
